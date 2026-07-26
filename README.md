@@ -1,3 +1,7 @@
+## Live Demo
+
+[Visit Mutual Fund Explorer](https://aadityapatil16.github.io/mutual-fund-explorer/)
+
 # Mutual Fund Explorer
 
 A FinTech dashboard built with HTML, CSS, and JavaScript that integrates MFAPI to fetch live Indian mutual fund data, display NAV details, and visualize historical performance trends using Chart.js.
