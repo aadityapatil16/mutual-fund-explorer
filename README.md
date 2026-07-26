@@ -1,6 +1,6 @@
 # Mutual Fund Explorer
 
-A FinTech dashboard to explore Indian mutual funds, view live NAV data, and analyze historical performance trends.
+A FinTech dashboard built with HTML, CSS, and JavaScript that integrates MFAPI to fetch live Indian mutual fund data, display NAV details, and visualize historical performance trends using Chart.js.
 
 ## Features
 
