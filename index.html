@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mutual Fund Explorer</title>
+
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- Lottie Animation -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- Animated Background -->
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+
+
+    <div class="container">
+
+
+
+        <!-- HERO SECTION -->
+
+        <section class="hero">
+
+
+            <div class="hero-left">
+
+
+                <div class="badge">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Live Mutual Fund Data
+
+                </div>
+
+
+
+                <h1>
+
+                    Mutual Fund
+
+                    <span>Explorer</span>
+
+                </h1>
+
+
+
+                <p class="subtitle">
+
+                    Search Indian mutual funds using live MF-API data.
+
+                    Instantly view NAV, AMC, category, scheme details and
+
+                    historical NAV trends.
+
+                </p>
+
+
+
+                <div class="search-box">
+
+
+                    <input
+
+                        type="text"
+
+                        id="fundInput"
+
+                        placeholder="Search Mutual Fund...">
+
+
+
+                    <button id="searchBtn">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        Search
+
+                    </button>
+
+
+                </div>
+
+
+
+                <div id="searchResults"></div>
+
+
+
+            </div>
+
+
+
+
+            <div class="hero-right">
+
+
+                <lottie-player
+
+                    src="https://assets2.lottiefiles.com/packages/lf20_puciaact.json"
+
+                    background="transparent"
+
+                    speed="1"
+
+                    loop
+
+                    autoplay>
+
+                </lottie-player>
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+        <!-- LOADING -->
+
+        <p id="loadingMessage"></p>
+
+
+
+
+
+
+        <!-- RESULT CARD -->
+
+
+        <section id="resultCard">
+
+
+            <div class="card-header">
+
+
+                <div>
+
+
+                    <h2 id="fundTitle">
+
+                        Select a Mutual Fund
+
+                    </h2>
+
+
+                    <p class="card-subtitle">
+
+                        Live information fetched from MFAPI
+
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="live-badge">
+
+
+                    <span class="live-dot"></span>
+
+                    LIVE
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            <div class="info-grid">
+
+
+                <div class="info-card">
+
+
+                    <i class="fa-solid fa-building-columns"></i>
+
+
+                    <h3>AMC</h3>
+
+
+                    <p id="amc">--</p>
+
+
+                </div>
+
+
+
+
+
+                <div class="info-card">
+
+
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+
+
+                    <h3>Latest NAV</h3>
+
+
+                    <p id="nav">--</p>
+
+
+                </div>
+
+
+
+
+
+                <div class="info-card">
+
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+
+                    <h3>NAV Date</h3>
+
+
+                    <p id="date">--</p>
+
+
+                </div>
+
+
+
+
+
+                <div class="info-card">
+
+
+                    <i class="fa-solid fa-barcode"></i>
+
+
+                    <h3>Scheme Code</h3>
+
+
+                    <p id="code">--</p>
+
+
+                </div>
+
+
+
+
+
+                <div class="info-card">
+
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+
+                    <h3>Category</h3>
+
+
+                    <p id="category">--</p>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <!-- CHART SECTION -->
+
+
+        <section id="chartSection">
+
+
+            <div class="chart-header">
+
+
+                <h2>
+
+                    <i class="fa-solid fa-chart-area"></i>
+
+                    NAV Performance
+
+                </h2>
+
+
+                <p>
+
+                    Historical NAV Trend
+
+                </p>
+
+
+            </div>
+
+
+
+
+            <canvas id="navChart"></canvas>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <!-- FOOTER -->
+
+
+        <footer>
+
+
+            <div class="footer-line"></div>
+
+
+
+            <p>
+
+                Built using
+
+                <strong>HTML</strong>
+
+                •
+
+                <strong>CSS</strong>
+
+                •
+
+                <strong>JavaScript</strong>
+
+                •
+
+                <strong>Chart.js</strong>
+
+                •
+
+                <strong>MFAPI</strong>
+
+
+            </p>
+
+
+
+        </footer>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
